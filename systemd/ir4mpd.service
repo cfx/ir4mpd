@@ -1,0 +1,10 @@
+[Unit]
+Description=IR control for MPD deamon
+
+[Service]
+Type=simple
+User=root
+ExecStart=/home/pi/devel/hw/ir4mpd
+
+[Install]
+WantedBy=multi-user.target
