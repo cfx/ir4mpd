@@ -31,7 +31,7 @@ var codes = map[int]string{
 	0x4a: "9",
 }
 
-var event_delay_ms int64 = 150
+const event_delay_ms = 150
 
 func main() {
 	var ts time.Time
@@ -54,7 +54,7 @@ func main() {
 
 		if code != 0 && code_str != "" && time_diff.Milliseconds() > event_delay_ms {
 			ts = time.Now()
-			go func() {
+			go func(code_str string) {
 				switch code_str {
 				case "VOL+":
 					execMpc("volume", "+10")
@@ -81,7 +81,7 @@ func main() {
 				execMpc("play", code_str)
 				return
 
-			}()
+			}(code_str)
 		}
 	}
 
