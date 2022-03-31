@@ -9,7 +9,7 @@ import (
 
 var codes = map[int]string{
 	//	0x45: "CH-",
-	//	0x46: "CH",
+	0x46: "CH",
 	//	0x47: "CH+",
 	0x44: "PREV",
 	0x40: "NEXT",
@@ -56,6 +56,9 @@ func main() {
 			ts = time.Now()
 			go func(code_str string) {
 				switch code_str {
+				case "CH":
+					exec.Command("poweroff").Output()
+					return
 				case "VOL+":
 					execMpc("volume", "+10")
 					return
